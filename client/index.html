@@ -5,29 +5,60 @@
 		<!-- CSS -->
 		<!-- Bootstrap -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- Custom CSS -->
+		<link rel="stylesheet" type="text/css" href="/client/styles.css">
 		<!-- Font - VT323 from Google WebFonts, under the Open Font License -->
 		<link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
-		<style type="text/css">
-			* {
-				font-family: 'VT323', monospace;
-			}
-		</style>
 		<!-- Content -->
 		<title>Multipuzzle</title>
 	</head>
 	<body>
-		<div class="container">
+		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-12">
 					<h1>mpOS v0.0.1a</h1>
 				</div>
 			</div>
+
 			<div class="row">
-				<div class="col-md-8">
-					<ul id="chat"></ul>
+				<p id="nick-error" class="text-danger">Your username is already in use.</p>
+				<p class="text-inline">Enter a nick here: </p>
+			</div>
+
+			<div class="row">
+				<div id="nick-wrap">
+					<form id="submit-nickname">
+						<div class="col-md-8">
+							<input id="nickname">
+						</div>
+						<div class="col-md-4">
+							 <input type="submit" value="SEND">
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="row">
+				<div id="chat-wrap">
+					<div class="col-md-8">
+						<ul id="chat" class="list-unstyled"></ul>
+					</div>
+					<div class="col-md-4">
+						<ul id="users" class="list-unstyled"></ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="row navbar navbar-fixed-bottom">
+				<div id="message-wrap">
 					<form id="submit-message">
-						<input id="message" value=">">
-						<input type="submit" value="SEND">
+						<div class="col-md-8">
+							<p class="text-inline">Enter a message here: </p>
+							<input id="message">
+						</div>
+						<div class="col-md-4">
+							<input type="submit" value="SEND">
+						</div>
 					</form>
 				</div>
 			</div>
