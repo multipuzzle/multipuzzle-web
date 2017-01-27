@@ -41,15 +41,22 @@ jQuery(function($){
 		e.preventDefault();
 		// Send the message to the server, it decides what to do with the data it receives
 		socket.emit('message', $messageBox.val(), function(data){
-			// Fill
+			// Calback for a failed whisper
+			$chat.append('<li><i class="text-warning">' + data + '</i></li>');
 		});
 		// Clear the message box
 		$messageBox.val('');
 	});
 
+	// Keep this for broadcast-all messages
 	// Handle messages sent (or sent back) from the server
 	socket.on('new-message', function(data){
 		$chat.append('<li>' + '<b>' + data.nick + ': </b>' + data.msg + '</li>');
+	});
+
+	// Direct messages (use for unidirectional comms)
+	socket.on('whisper', function(data){
+		$chat.append('<li><i>' + '<b>' + data.nick + ': </b>' + data.msg + '</i></li>');
 	});
 
 	// Get the list of usernames

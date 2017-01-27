@@ -47,15 +47,22 @@ io.sockets.on('connection', function(socket) {
 		var msg = data.trim();
 		if (msg.substr(0, 3) === '/w ') { // Whisper (dm)
 			msg = msg.substr(3); // Safe to reuse var
-			var ind = msg.msg.indexOf(' ');
+			var ind = msg.indexOf(' ');
 			if (ind != -1) {
-				console.log('Whisper!');
+				var name = msg.substr(0, ind);
+				msg = msg.substr(ind++);
+				if (name in users) {
+					users[name].emit('whisper', {msg: msg, nick: socket.nickname});
+					console.log('Whisper!');
+				} else {
+					callback('User not valid');
+				}				
 			} else {
 				callback('Either you didn\'t enter a message, or you didn\'t space-delimit it.');
 			}
 		} else { // Regular message
 			// Messages of type 'new-message' are sent to all users
-			io.sockets.emit('new-message', {msg: data, nick: socket.nickname});			
+			io.sockets.emit('new-message', {msg: msg, nick: socket.nickname});			
 		}
 		// Messaged of type 'new-message' are sent to all users except the user who submitted the message
 		//socket.broadcast.emit('new-message', data);
