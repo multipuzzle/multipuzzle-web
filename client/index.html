@@ -1,26 +1,47 @@
 <!DOCTYPE html>
+<!-- Multipuzzle is released under The Unlicense, viewable at unlicense.org. Everything other than third-party-supplied materials, frameworks and libraries are in the public domain. -->
 <html>
 	<head>
-		<!-- Scripts & CSS -->
-		<script type="text/javascript" src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
-		<script type="text/javascript">
-			// Initialise a websocket connection to the server
-			var socket = io();
-
-			socket.emit('happy', {
-				reason:'because why not'
-			});
-		</script>
-		<!-- Move to a separate file later -->
+		<!-- CSS -->
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- Font - VT323 from Google WebFonts, under the Open Font License -->
+		<link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
 		<style type="text/css">
-			body {
-				
+			* {
+				font-family: 'VT323', monospace;
 			}
 		</style>
 		<!-- Content -->
 		<title>Multipuzzle</title>
 	</head>
 	<body>
-		<h1>Hello world</h1>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h1>mpOS v0.0.1a</h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-8">
+					<ul id="chat"></ul>
+					<form id="submit-message">
+						<input id="message" value=">">
+						<input type="submit" value="SEND">
+					</form>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- Scripts -->
+		<!-- jQuery (always load jQuery first) -->
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+		<!-- socket.io (automatically on server when running socket.io) -->
+		<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+		<!-- Bootstrap -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<!-- Project's client-side code -->
+		<script type="text/javascript" src="client/js/client.js"></script>
 	</body>
 </html>
