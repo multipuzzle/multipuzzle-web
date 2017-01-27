@@ -1,0 +1,20 @@
+/* Use VT323 everywhere */
+* {
+	font-family: 'VT323', monospace;
+}
+
+body {
+	padding-bottom: 70px;
+}
+
+#chat {
+	/*height: 75vh;*/
+}
+
+#message-wrap {
+	display: none;
+}
+
+#nick-error {
+	display: none;
+}
