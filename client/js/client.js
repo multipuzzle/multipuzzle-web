@@ -40,7 +40,9 @@ jQuery(function($){
 		// Stop the page from refreshing
 		e.preventDefault();
 		// Send the message to the server, it decides what to do with the data it receives
-		socket.emit('message', $messageBox.val());
+		socket.emit('message', $messageBox.val(), function(data){
+			// Fill
+		});
 		// Clear the message box
 		$messageBox.val('');
 	});

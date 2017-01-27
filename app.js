@@ -43,10 +43,16 @@ io.sockets.on('connection', function(socket) {
 		io.sockets.emit('usernames', Object.keys(users));
 	}
 
-	socket.on('message', function(data){
+	socket.on('message', function(data, callback){
 		var msg = data.trim();
 		if (msg.substr(0, 3) === '/w ') { // Whisper (dm)
-			console.log('Whisper!');
+			msg = msg.substr(3); // Safe to reuse var
+			var ind = msg.msg.indexOf(' ');
+			if (ind != -1) {
+				console.log('Whisper!');
+			} else {
+				callback('Either you didn\'t enter a message, or you didn\'t space-delimit it.');
+			}
 		} else { // Regular message
 			// Messages of type 'new-message' are sent to all users
 			io.sockets.emit('new-message', {msg: data, nick: socket.nickname});			
